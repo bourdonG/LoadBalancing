@@ -42,3 +42,5 @@ IP address      Client-ID/              Lease expiration        Type       State
 
 On prend le temps de regarder les échanges (ip address et interface)
 
+On coupe la liaison entre AS1 et DS1
+=> La passerelle du VLAN 10 est maintenant joignable via DS2
