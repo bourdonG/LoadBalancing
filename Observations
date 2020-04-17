@@ -42,5 +42,7 @@ IP address      Client-ID/              Lease expiration        Type       State
 
 On prend le temps de regarder les échanges (ip address et interface)
 
-On coupe la liaison entre AS1 et DS1
-=> La passerelle du VLAN 10 est maintenant joignable via DS2
+Maintenant on laisse un ping continu de PC1 vers sa passerelle et on coupe la liaison entre AS1 et DS1
+=> La passerelle du VLAN 10 est maintenant joignable via DS2, on remarque qu'il y a eu 3 paquets de perdus et que le temps de latence est légèrement supérieur
+
+
