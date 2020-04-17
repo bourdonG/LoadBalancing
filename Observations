@@ -1,1 +1,44 @@
+Après configuration
+
+Sur AS1 et AS2 on regarde les configurations de la répartition des charges
+
+show spanning-tree vlan 10 active
+show spanning-tree vlan 20 active
+
+On remarque sur AS1:
+
+Po2                 Altn BLK (pour le vlan 10)
+Po2                 Root FWD (pour le vlan20)
+
+Après avoir configuré DHCP, on laisse le service attribuer une adresse ipv4 à chaques PCs
+
+Ping de PC1 (172.16.10.51) à PC6 (172.16.20.2)
+
+Avec la commande "sh ip dhcp binding" sur DS1 et DS2:
+
+DS1(config)#do sh ip dhcp binding
+Bindings from all pools not associated with VRF:
+IP address      Client-ID/              Lease expiration        Type       State      Interface
+                Hardware address/
+                User name
+172.16.10.1     0100.5079.6668.00       Apr 18 2020 01:07 PM    Automatic  Active     Vlan10
+172.16.10.2     0100.5079.6668.04       Apr 18 2020 01:08 PM    Automatic  Active     Vlan10
+172.16.20.1     0100.5079.6668.01       Apr 17 2020 01:12 PM    Automatic  Selecting  Vlan20
+172.16.20.2     0100.5079.6668.05       Apr 18 2020 01:08 PM    Automatic  Active     Vlan20
+172.16.30.1     0100.5079.6668.02       Apr 18 2020 01:07 PM    Automatic  Active     Vlan30
+172.16.40.1     0100.5079.6668.03       Apr 17 2020 01:12 PM    Automatic  Selecting  Vlan40
+
+DS2(config)#do sh ip dhcp binding
+Bindings from all pools not associated with VRF:
+IP address      Client-ID/              Lease expiration        Type       State      Interface
+                Hardware address/
+                User name
+172.16.10.51    0100.5079.6668.00       Apr 17 2020 01:12 PM    Automatic  Selecting  Vlan10
+172.16.10.52    0100.5079.6668.04       Apr 17 2020 01:12 PM    Automatic  Selecting  Vlan10
+172.16.20.51    0100.5079.6668.01       Apr 18 2020 01:07 PM    Automatic  Active     Vlan20
+172.16.20.52    0100.5079.6668.05       Apr 17 2020 01:13 PM    Automatic  Selecting  Vlan20
+172.16.30.51    0100.5079.6668.02       Apr 17 2020 01:12 PM    Automatic  Selecting  Vlan30
+172.16.40.51    0100.5079.6668.03       Apr 18 2020 01:07 PM    Automatic  Active     Vlan40
+
+On prend le temps de regarder les échanges (ip address et interface)
 
